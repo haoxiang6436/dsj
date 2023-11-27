@@ -22,5 +22,10 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    host: '0.0.0.0', // 允许来自任何IP地址的访问
+    port: 80 // 使用相同的端口号
+    // disableHostCheck: true // 禁用主机检查，允许来自任何IP地址的访问
   }
 })
