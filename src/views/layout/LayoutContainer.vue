@@ -107,7 +107,7 @@ const commandRouter = (key) => {
       </el-header>
       <el-main style="overflow-x: hidden">
         <router-view v-slot="{ Component }">
-          <transition>
+          <transition name="layout" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
@@ -118,19 +118,79 @@ const commandRouter = (key) => {
 </template>
 
 <style scoped>
-.v-leave-active {
-  transition: all 0.3s ease;
-}
+/* .layout-leave-active {
+  transition: all 5s ease;
+} */
 
-.v-enter-from,
-.v-leave-to {
+/* .layout-enter-from,
+.layout-leave-to {
   transform: translateX(500px) scale(0.8);
   opacity: 0;
 }
-.v-enter-to,
-.v-leave-from {
+.layout-enter-to,
+.layout-leave-from {
   transform: translateX(-500px) scale(0.8);
   opacity: 0;
+} */
+/*
+ */
+/* .layout-enter-from,
+.layout-enter-to,
+.layout-leave-to,
+.layout-leave-from {
+  transform: scale(0%);
+  transform-origin: 0 0;
+  opacity: 0;
+} */
+/*  */
+/* .layout-enter-from,
+.layout-leave-to {
+  transform: translateX(100px);
+  transform-origin: 0% 100%;
+  opacity: 0;
+}
+
+.layout-enter-to,
+.layout-leave-from {
+  transform-origin: 0% 100%;
+} */
+.layout-leave-active {
+  animation: identifierLeave 1s;
+}
+.layout-enter-active {
+  animation: identifierEnter 1s;
+}
+@keyframes identifierEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(200px) scale(0.6);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-0px) scale(0.6);
+  }
+  60% {
+    transform: translateY(-0px) scale(0.6);
+  }
+  100% {
+    transform: translateY(-0px) scale(1);
+  }
+}
+@keyframes identifierLeave {
+  0% {
+    transform: translateY(-0px) scale(1);
+  }
+  40% {
+    transform: translateY(-0px) scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-0px) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0.6);
+  }
 }
 </style>
 <style lang="scss" scoped>
