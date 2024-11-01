@@ -48,8 +48,6 @@ const router = createRouter({
 })
 // 路由守卫
 router.beforeEach(async (to) => {
-  // const res = await userGetUserInfoService()
-  // console.log(res)
   const userStore = useUserStore()
   if (!userStore.token && to.path !== '/login') {
     console.log('未登录')
